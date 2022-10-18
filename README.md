@@ -1,24 +1,19 @@
 # design-002
 스토어 서비스(금강상사)
 
-## 리소드
+## 리소스
 
 [부트스트랩](https://getbootstrap.kr/)
 
-적용버전
-
-```sh
-# css
-https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css
-# js
-https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js
-```
+적용버전(5.2.2)
 
 ### 폴더구조
 
 ```sh
 root
     /str # 고객용(store)
+        # 구글 플레이 스토어 구조 참고
+        # https://play.google.com/store/games
     /wrk # 직원용(work)
     /adm # 관리자(admin)
 
@@ -31,4 +26,6 @@ root
 
 https://goodmemory.tistory.com/m/119
 
-무료아이콘: https://fontawesome.com/search?o=r&m=free
+### 자바스크립트
+
+document 객체 설명: http://www.tcpschool.com/javascript/js_dom_document
