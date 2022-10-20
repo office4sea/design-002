@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td></td>
-            <td>장바구니 팝업</td>
+            <td><a href="store/list-cart.html">장바구니 팝업</a></td>
             <td></td>
         </tr>
         <tr>

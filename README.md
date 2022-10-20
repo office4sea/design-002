@@ -9,13 +9,21 @@
 
 ### 폴더구조
 
+[고객용(hpg)](hpg/index.html)
+직원용(wrk)
+관리자(adm)
+
 ```sh
 root
     /hpg # 고객용(homepage)
         # 구글 플레이 스토어 구조 참고
         # https://play.google.com/store/games
+        /api # JSON 데이터
+            /v1
     /wrk # 직원용(work)
+        /api # JSON 데이터
     /adm # 관리자(admin)
+        /api # JSON 데이터
 
     /img # 이미지
     /libs # 웹 리소스, 라이브러리

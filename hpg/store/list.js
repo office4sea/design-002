@@ -4,6 +4,19 @@ waf({
         {selector: '#footer', url: '/design-002/hpg/gnb/tpl.footer.html'},
     ]
 });
+
+waf.addEventListener('pageLoad', _=> {
+    const {utils} = waf;
+
+    setTimeout(_=> {
+        // 상단 베너
+        waf.fetchHtml('/design-002/hpg/store/list/tpl.top-banner.html')
+            .then(innerHTML=> utils.query('#top-banner', {innerHTML}))
+            // 배너 애니메이션
+            .then(el=> new bootstrap.Carousel(el).cycle());
+    }, 1000);
+});
+
 waf.addEventListener('pageHolder', _=> {
     const {utils} = waf;
 

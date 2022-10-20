@@ -18,6 +18,14 @@
 waf.nextFrame = callback=> new Promise(_=>{});
 
 /**
+ * 요청 경로의 파일로 부터 HTML 텍스트를 반환 합니다.
+ * 
+ * @param {string} url 
+ * @returns {Promise<string>}
+ */
+waf.fetchHtml = async url=> (await fetch(url)).text();
+
+/**
  * 어플리케이션 로드전 페이지 로딩 처리를 위한 리스너
  */
 waf.onProgress = ()=> {};

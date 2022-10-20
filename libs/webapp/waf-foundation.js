@@ -23,7 +23,7 @@ function waf(arg={}) {
             const el = document.querySelector(selector);
             if(!el) return 2;
 
-            el.innerHTML = await (await fetch(url, {cache: 'no-cache'})).text();
+            el.innerHTML = await waf.fetchHtml(url);
         }));
     };
 
@@ -40,6 +40,13 @@ function waf(arg={}) {
     //
     // 화면 갱신 후 처리 수행
     app.nextFrame = cb=> new Promise(rs=> requestAnimationFrame(_=> (cb ? cb(rs) : rs())));
+    // html 파일 요청 처리
+    app.fetchHtml = async url=> {
+        if(!url) return Promise.reject('invalid url');
+        else {
+            return (await fetch(url, {cache: 'no-cache'})).text();
+        }
+    };
 
     //
     // 어플리케이션 리스너 처리
