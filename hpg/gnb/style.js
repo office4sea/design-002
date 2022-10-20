@@ -6,7 +6,7 @@ waf.addEventListener('pageHolder', _=> {
         innerHTML: `
         <div class="container-fluid container-lg">
             <a class="navbar-brand">
-                <img src="/img/logo.svg" alt="금강상사" class="d-inline-block align-text-top" style="width:30px; height:24px;">
+                <img src="/design-002/img/logo.svg" alt="금강상사" class="d-inline-block align-text-top" style="width:30px; height:24px;">
                 금강상사
             </a>
             <button class="navbar-toggler placeholder" type="button" disabled>

@@ -1,7 +1,7 @@
 waf({
     htmls: [
-        {selector: '#navbar', url: '/hpg/gnb/tpl.navbar.html'},
-        {selector: '#footer', url: '/hpg/gnb/tpl.footer.html'},
+        {selector: '#navbar', url: '/design-002/hpg/gnb/tpl.navbar.html'},
+        {selector: '#footer', url: '/design-002/hpg/gnb/tpl.footer.html'},
     ]
 });
 waf.addEventListener('pageHolder', _=> {

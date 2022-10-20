@@ -1,6 +1,6 @@
-<h2 class="pb-2 border-bottom">상점</h2>
+<h2 class="pb-2 border-bottom">기타</h2>
 <table class="table table-striped">
-    <caption>상점</caption>
+    <caption>기타</caption>
     <thead>
         <tr>
             <th scope="col">화면</th>
@@ -10,16 +10,15 @@
     </thead>
     <tbody>
         <tr>
-            <td colspan="2"><a href="store/list.html">상품목록</a></td>
+            <td colspan="2"><a href="#">회사소개</a></td>
             <td></td>
         </tr>
         <tr>
-            <td></td>
-            <td>장바구니 팝업</td>
+            <td colspan="2"><a href="#">이용약관</a></td>
             <td></td>
         </tr>
         <tr>
-            <td colspan="2"><a href="store/detail.html">상품상세</a></td>
+            <td colspan="2"><a href="#">개인정보처리방침</a></td>
             <td></td>
         </tr>
     </tbody>
