@@ -1,0 +1,45 @@
+<div class="container-fluid container-lg">
+    <a class="navbar-brand" href="#">
+        <img src="/img/logo.svg" alt="금강상사" width="30" height="24" class="d-inline-block align-text-top">
+        금강상사
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body flex-row-reverse">
+            <form class="d-flex" role="search">
+                <div class="input-group">
+                    <input class="form-control border-secondary" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <ul class="navbar-nav pe-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">상품</a>
+                    <ul class="dropdown-menu dropdown-menu">
+                      <li><a class="dropdown-item active" href="#" role="button">음료</a></li>
+                      <li><a class="dropdown-item" href="#" role="button">스넥/라면</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#" role="button">기타</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">장바구니</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">설정</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

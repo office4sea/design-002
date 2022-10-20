@@ -11,7 +11,7 @@
 
 ```sh
 root
-    /str # 고객용(store)
+    /hpg # 고객용(homepage)
         # 구글 플레이 스토어 구조 참고
         # https://play.google.com/store/games
     /wrk # 직원용(work)
