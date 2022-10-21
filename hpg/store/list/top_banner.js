@@ -1,29 +1,15 @@
-waf.voBind({
-    id: 'top_banner',
-}, vo=> {
-    waf.debug.log('-vo-', vo);
-    initValue(), bindEvent();
-    // vo.el;
-    // vo.getText();
-    // vo.getHtml();
-    // vo.getValue();
-    // vo.getProp();
-    // vo.getAttr();
+waf.voBind('top_banner', vo=> {
+    initHandle(); // 객체 초기화
+    bindEvent(); // 이벤트 바인딩
 
-    // vo.btnEx.event('click', _=> {
-    // });
-
-    function initValue() {
-        waf.debug.log('-el-', vo.el);
-        vo.setText({
-            headline: '1234',
-            btnExample: '1122'
-        });
+    function initHandle() {
+        waf.debug.log(vo.headline.hasClass('placeholder'))
+        vo.headline.removeClass('placeholder');
+        vo.headline.addClass(['a', 'b']);
     }
     function bindEvent() {
         vo.btnExample.event('click', evt=> {
-            vo.headline.text = '112233';
-            waf.debug.log('-btnExample-', vo.getText(), vo.getText(['btnExample']));
+            waf.debug.log('-btnExample-', vo.getValue());
         });
     }
 });
