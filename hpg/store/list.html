@@ -24,7 +24,27 @@
     <div class="wrap placeholder-glow">
         <!-- 네비게이션 바 --> <nav id="navbar" class="navbar navbar-expand-md fixed-top bg-white"></nav>
         <!-- 컨테이너 바디 --><main id="container">
-            <!-- 상단베너 --><div id="top-banner" class="carousel slide hpg-top-banner"></div>
+
+            <!-- 상단베너 -->
+            <div id="top_banner" class="carousel slide hpg-top-banner">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <svg class="d-block w-100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <rect width="100%" height="100%" fill="#777"></rect>
+                        </svg>
+                        <div class="container">
+                            <div class="carousel-caption text-start">
+                                <h1 data-vo="headline">Example headline.</h1>
+                                <p><button data-vo="btnExample" class="btn btn-primary col-3">Example</button></p>
+                                <h1 data-vo="headline">Example headline.</h1>
+                                <p><button data-vo="btnExample" class="btn btn-primary col-3">Example</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /상단베너 -->
+
             <!-- 최근 구매 상품 --><div id="last-items" class="container-lg py-4"></div>
             <!-- 카테고리 상품 --><div id="category-items" class="container-lg py-4"></div>
         <!-- /컨테이너 바디 --></main>

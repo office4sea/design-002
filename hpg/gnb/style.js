@@ -33,7 +33,7 @@ waf.addEventListener('pageHolder', _=> {
     // 네비게이션바 그림자 처리
     const navbarSpy = _=> {
         const {documentElement: {scrollTop}} = document;
-    
+
         if (scrollTop) navbar.classList.add('shadow');
         else {
             navbar.classList.remove('shadow');

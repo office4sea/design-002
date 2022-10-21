@@ -9,10 +9,6 @@
 
 ### 폴더구조
 
-[고객용(hpg)](hpg/index.html)
-직원용(wrk)
-관리자(adm)
-
 ```sh
 root
     /hpg # 고객용(homepage)
@@ -29,6 +25,14 @@ root
     /libs # 웹 리소스, 라이브러리
         /bootstrap # 부트스트랩
 ```
+
+#### 화면 구조
+
+[고객용(hpg)](https://office4sea.github.io/design-002/hpg/)
+
+직원용(wrk)
+
+관리자(adm)
 
 ### 아이콘 생성방법
 

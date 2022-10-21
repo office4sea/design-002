@@ -2,41 +2,36 @@ waf({
     htmls: [
         {selector: '#navbar', url: '/design-002/hpg/gnb/tpl.navbar.html'},
         {selector: '#footer', url: '/design-002/hpg/gnb/tpl.footer.html'},
+    ],
+    libs: [
+        '/design-002/libs/webapp/waf-binder.js',
+    ],
+    scripts: [
+        '/design-002/hpg/gnb/gnb.js',
+        '/design-002/hpg/store/list/top_banner.js',
+        '/design-002/hpg/store/list/modal-cart.js',
     ]
 });
 
 waf.addEventListener('pageLoad', _=> {
     const {utils} = waf;
 
-    setTimeout(_=> {
-        // 상단 베너
-        waf.fetchHtml('/design-002/hpg/store/list/tpl.top-banner.html')
-            .then(innerHTML=> utils.query('#top-banner', {innerHTML}))
-            // 배너 애니메이션
-            .then(el=> new bootstrap.Carousel(el).cycle());
-    }, 1000);
+    // waf.requireScript('/design-002/hpg/store/list/cart.js')
+    //     .then(_=> {
+    //         console.log('--x--', _, xxx);
+    //     })
+
+    // setTimeout(_=> {
+    //     // 상단 베너
+    //     waf.fetchHtml('/design-002/hpg/store/list/tpl.top-banner.html')
+    //         .then(innerHTML=> utils.query('#top-banner', {innerHTML}))
+    //         // 배너 애니메이션
+    //         .then(el=> new bootstrap.Carousel(el).cycle());
+    // }, 1000);
 });
 
 waf.addEventListener('pageHolder', _=> {
     const {utils} = waf;
-
-    // 상단베너
-    utils.query('#top-banner', {
-        innerHTML: `
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <svg class="d-block w-100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-
-                <div class="container">
-                    <div class="carousel-caption text-start">
-                        <h1 class="placeholder">Example headline.</h1>
-                        <p><button class="btn btn-lg btn-primary disabled placeholder col-3"></button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        `
-    });
 
     const htmlCards = cnt=> {
         const result = [];
@@ -58,7 +53,7 @@ waf.addEventListener('pageHolder', _=> {
                                     <span class="placeholder">판매가: 10,000원</span>
                                 </p>
                                 <p class="card-text">
-                                    <button type="button" class="btn btn-outline-primary placeholder">구매하기</button>
+                                    <button type="button" class="btn btn-outline-primary">구매하기</button>
                                 </p>
                             </div>
                         </div>
