@@ -63,13 +63,13 @@ waf.addEventListener('pageHolder', _=> {
         }
         return result.join('');
     };
-    // 최근 구매 상품
-    utils.query('#last-items', {
-        innerHTML: `
-        <h2 class="pb-2 border-bottom placeholder">최근 구매 상품</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">${htmlCards(3)}</div>
-        `
-    });
+    // // 최근 구매 상품
+    // utils.query('#last-items', {
+    //     innerHTML: `
+    //     <h2 class="pb-2 border-bottom placeholder">최근 구매 상품</h2>
+    //     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">${htmlCards(3)}</div>
+    //     `
+    // });
     // 카테고리 상품
     utils.query('#category-items', {
         innerHTML: `

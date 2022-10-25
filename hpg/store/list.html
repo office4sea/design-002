@@ -43,7 +43,39 @@
             </div>
             <!-- /상단베너 -->
 
-            <!-- 최근 구매 상품 --><div id="last-items" class="container-lg py-4"></div>
+            <!-- 최근 구매 상품 -->
+            <div id="last_items" class="container-lg py-4">
+                <h2 data-vo="title" class="pb-2 border-bottom placeholder">최근 구매 상품</h2>
+                <div data-vo="itemList" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+                    <div data-vo-item="notFound" class="col">데이터가 존재 하지 않습니다.</div>
+                    <div data-vo-item="item" class="col">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <svg class="border-0 img-thumbnail h-100 w-100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <title>No Image</title>
+                                        <rect width="100%" height="100%" fill="#868e96"></rect>
+                                    </svg>
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><small data-vo="prdName">캔콜라 500ml 박스</small></h5>
+                                        <p class="card-text">
+                                            <small data-vo="prdInfo" class="text-muted">캔콜라 500ml캔 * 30개</small><br/>
+                                            판매가: <span data-vo="prdPrice">10,000원</span>
+                                        </p>
+                                        <p class="card-text">
+                                            <button data-vo="btnBuy" type="button" class="btn btn-outline-primary">구매하기</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /최근 구매 상품 -->
+
             <!-- 카테고리 상품 --><div id="category-items" class="container-lg py-4"></div>
         <!-- /컨테이너 바디 --></main>
         <!-- 푸터 --> <div id="footer" class="container-lg"></div>
