@@ -4,9 +4,13 @@ hbF({
         {selector: '#navbar', url: '/design-002/hpg/gnb/tpl.navbar.html'},
         {selector: '#footer', url: '/design-002/hpg/gnb/tpl.footer.html'},
     ],
-    // implements: [],
+    implements: [
+        '/design-002/libs/webapp/hbF.popup.js'
+    ],
     scripts: [
         'list/topBanner.js',
         'list/lastItems.js',
     ]
 });
+
+hbF();

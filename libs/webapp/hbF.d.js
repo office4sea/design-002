@@ -5,7 +5,7 @@
  * - setStatus: 어플리케이션 수행 상태를 설정 합니다.
  * - getStatus: 어플리케이션 수행 상태를 반환 합니다.
  * - addEventListener: 어플리케이션의 지정한 이벤트 타입이 수신 될때 마다 호출 될 함수를 등록합니다.
- * - mixin: 객체를 믹스인 합니다.
+ * - bindProperty: 속성을 추가 합니다.
  * 
  * **유틸리티**
  * - debug: 디버깅 처리 객체 입니다.
@@ -45,21 +45,136 @@ hbF.getStatus = ()=> undefined;
  */
 hbF.addEventListener = (type, callback)=> {};
 /**
- * 객체를 믹스인 합니다.
- * 함수를 전달 할 경우 함수의 리턴값을 믹스인 처리 합니다.
- * @param {object|()=> object} option 
- * @returns {void}
+ * 속성을 추가 합니다.
+ * @param {string} signature 속성 키값
+ * @param {{
+ *   get?: ()=> any,
+ *   set?: (arg:any)=> void
+ * }} property 속성에 부여할 게터/세터
+ * @returns {ValueObject}
  */
-hbF.mixin = (option)=> {};
+hbF.bindProperty = (signature, property)=> hbF;
+
+
+// ===== 디버깅 객체 =====
+/**
+ * 디버깅 모드를 활성화 / 비활성화 처리 합니다.
+ * @example
+ * // 디버깅을 활성화.
+ * hbF.debug = true;
+ * // 디버깅 비활성화
+ * hbF.debug = false;
+ */
+hbF.debug = {
+    /**콘솔 로그를 출력 합니다. */
+    log(...args) {},
+    /**콘솔 스택 로그를 출력 합니다. */
+    info(...args) {},
+    /**콘솔 오류를 출력 합니다. */
+    error(...args) {},
+    /**중단점을 설정 합니다. */
+    get break() {},
+    /**로그 레벨(모든 로그 출력) */
+    get sysLevel() {},
+    /**로그 레벨(시스템 로그 출력하지 않음) */
+    get logLevel() {},
+    /**로그 레벨(경고 로그만 출력함) */
+    get infoLevel() {},
+};
+
+// ===== 스토리지 객체 =====
+/**
+ * 웹 스토리지 저장 / 읽기 처리 합니다.
+ */
+hbF.storage = {
+    /**로컬 스토리지 */
+    local: hbF_Storage,
+    /**세션 스토리지 */
+    session: hbF_Storage,
+    /**쿠키 */
+    cookie: {
+        /**
+         * 쿠키값 반환
+         * @param {string} ky
+         * @returns {string|null}
+         */
+        getItem(ky) {},
+        /**
+         * 쿠키값 저장
+         * @param {string} ky
+         * @param {string} vl
+         * @returns {void}
+         */
+        setItem(ky, vl) {},
+        /**
+         * 쿠키값 저장
+         * @param {string} ky
+         * @returns {void}
+         */
+        removeItem(ky) {},
+    }
+};
+const hbF_Storage = {
+    /**
+     * 스토리지 키값을 설정합니다.
+     * 설정된 키값을 getter/setter로 사용됩니다.
+     * @param {string|Array<string>} keys
+     * @returns {void}
+     * @example
+     * // 키값 설정
+     * storage.local.setKeys('sample_key1');
+     * storage.local.setKeys(['sample_key1', 'sample_key2']);
+     * // 데이터 저장
+     * storage.local.sample_key1 = 'data';
+     * // 데이터 조회
+     * console.log(storage.local.sample_key1);
+     */
+    setKeys(keys) {},
+    /**
+     * 스토리지에 저장된 데이터(객체)를 반환 합니다.
+     * @param {string} ky 조회키
+     * @returns {object}
+     */
+    getJson(ky) {},
+    /**
+     * 스토리지에 저장된 데이터(텍스트)를 반환 합니다.
+     * @param {string} ky 조회키
+     * @returns {string}
+     */
+    getItem(ky) {},
+    /**
+     * 스토리지에 데이터를 저장 합니다.
+     * @param {string} ky 조회키
+     * @param {*} vl
+     */
+    setItem(ky, vl) {},
+    /**
+     * 스토리지의 항목을 삭제 합니다.
+     * @param {string} ky 조회키
+     */
+    removeItem(ky) {},
+    /**
+     * 정규식과 일치하는 스토리지 항목을 모두 삭제합니다.
+     * 값이 없을 경우 스토리지를 초기화 합니다.
+     * @param {RegExp=} regExp
+     */
+    clear(regExp) {}
+};
 
 // ===== 바인딩 객체 =====
 /**
- * 엘리먼트를 제어 할수 있는 바인딩 객체를 반환 합니다.
+ * 엘리먼트를 제어 할수 있는 바인딩 객체를 생성합니다.
  * @param {string} id 대상 엘리먼트 아이디
  * @param {(vo: ValueObject & Object<string, voHaldle>)=> void} callback 바인딩 될때 수행될 프로시저
- * @returns {ValueObject}
+ * @returns {void}
  */
-hbF.binder = (id, callback)=> ValueObject;
+hbF.binder = (id, callback)=> {};
+/**
+ * 바인딩된 객체를 반환 합니다.
+ * @param {string} id 
+ * @returns {ValueObject & Object<string, voHaldle>}
+ */
+hbF.binder.getBindObject = id=> {};
 const voHaldle = Object.assign(new HTMLElement, {
     /**엘리먼트 텍스트 조회/출력 */
     text: '',
@@ -185,109 +300,26 @@ const ValueObject = {
      * }
      */
     appendItem(name, onBindItem) {},
+    /**
+     * 등록된 이벤트 리스너를 반환 합니다.
+     * @returns {Object<string, (arg: any)=>void>}
+     */
+    getEvents() {},
+    /**
+     * 이벤트 발생시 호출될 함수를 등록합니다.
+     * @param {string} 이벤트 타입
+     * @param {(arg: any)=> void} 이벤트 발생 시 호출 될 함수
+     * @returns {ValueObject}
+     */
+    addEvent(type, listener) {},
+    /**
+     * 속성을 추가 합니다.
+     * @param {string} signature 
+     * @param {{
+     *   get?: ()=> any,
+     *   set?: (arg:any)=> void
+     * }} property
+     * @returns {ValueObject}
+     */
+    bindProperty(signature, property) {},
 };
-
-// ===== 디버깅 객체 =====
-/**
- * 디버깅 모드를 활성화 / 비활성화 처리 합니다.
- * @example
- * // 디버깅을 활성화.
- * hbF.debug = true;
- * // 디버깅 비활성화
- * hbF.debug = false;
- */
-hbF.debug = {
-    /**콘솔 로그를 출력 합니다. */
-    log(...args) {},
-    /**콘솔 스택 로그를 출력 합니다. */
-    info(...args) {},
-    /**콘솔 오류를 출력 합니다. */
-    error(...args) {},
-    /**중단점을 설정 합니다. */
-    get break() {},
-    /**로그 레벨(모든 로그 출력) */
-    get sysLevel() {},
-    /**로그 레벨(시스템 로그 출력하지 않음) */
-    get logLevel() {},
-    /**로그 레벨(경고 로그만 출력함) */
-    get infoLevel() {},
-};
-
-// ===== 스토리지 객체 =====
-/**
- * 웹 스토리지 저장 / 읽기 처리 합니다.
- */
-hbF.storage = {
-    /**로컬 스토리지 */
-    local: hbF_Storage,
-    /**세션 스토리지 */
-    session: hbF_Storage,
-    /**쿠키 */
-    cookie: {
-        /**
-         * 쿠키값 반환
-         * @param {string} ky
-         * @returns {string|null}
-         */
-        getItem(ky) {},
-        /**
-         * 쿠키값 저장
-         * @param {string} ky
-         * @param {string} vl
-         * @returns {void}
-         */
-        setItem(ky, vl) {},
-        /**
-         * 쿠키값 저장
-         * @param {string} ky
-         * @returns {void}
-         */
-        removeItem(ky) {},
-    }
-};
-const hbF_Storage = {
-    /**
-     * 스토리지 키값을 설정합니다.
-     * 설정된 키값을 getter/setter로 사용됩니다.
-     * @param {string|Array<string>} keys
-     * @returns {void}
-     * @example
-     * // 키값 설정
-     * storage.local.setKeys('sample_key1');
-     * storage.local.setKeys(['sample_key1', 'sample_key2']);
-     * // 데이터 저장
-     * storage.local.sample_key1 = 'data';
-     * // 데이터 조회
-     * console.log(storage.local.sample_key1);
-     */
-    setKeys(keys) {},
-    /**
-     * 스토리지에 저장된 데이터(객체)를 반환 합니다.
-     * @param {string} ky 조회키
-     * @returns {object}
-     */
-    getJson(ky) {},
-    /**
-     * 스토리지에 저장된 데이터(텍스트)를 반환 합니다.
-     * @param {string} ky 조회키
-     * @returns {string}
-     */
-    getItem(ky) {},
-    /**
-     * 스토리지에 데이터를 저장 합니다.
-     * @param {string} ky 조회키
-     * @param {*} vl
-     */
-    setItem(ky, vl) {},
-    /**
-     * 스토리지의 항목을 삭제 합니다.
-     * @param {string} ky 조회키
-     */
-    removeItem(ky) {},
-    /**
-     * 정규식과 일치하는 스토리지 항목을 모두 삭제합니다.
-     * 값이 없을 경우 스토리지를 초기화 합니다.
-     * @param {RegExp=} regExp
-     */
-    clear(regExp) {}
- };

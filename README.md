@@ -3,36 +3,15 @@
 
 ## 리소스
 
-[부트스트랩](https://getbootstrap.kr/)
+[부트스트랩(5.2.2)](https://getbootstrap.kr/)
 
-적용버전(5.2.2)
+#### 화면 구조 바로가기
 
-### 폴더구조
+고객용(hpg): https://office4sea.github.io/design-002/hpg
 
-```sh
-root
-    /hpg # 고객용(homepage)
-        # 구글 플레이 스토어 구조 참고
-        # https://play.google.com/store/games
-        /api # JSON 데이터
-            /v1
-    /wrk # 직원용(work)
-        /api # JSON 데이터
-    /adm # 관리자(admin)
-        /api # JSON 데이터
+직원용(wrk): https://office4sea.github.io/design-002/wrk
 
-    /img # 이미지
-    /libs # 웹 리소스, 라이브러리
-        /bootstrap # 부트스트랩
-```
-
-#### 화면 구조
-
-[고객용(hpg)](https://office4sea.github.io/design-002/hpg/)
-
-직원용(wrk)
-
-관리자(adm)
+관리자(adm): https://office4sea.github.io/design-002/adm
 
 ### 아이콘 생성방법
 

@@ -44,7 +44,7 @@
 
             <!-- 최근 구매 상품 -->
             <div id="lastItems" class="container-lg py-4">
-                <h2 data-vo="title" class="pb-2 border-bottom placeholder">최근 구매 상품</h2>
+                <h2 class="pb-2 border-bottom">최근 구매 상품</h2>
                 <div data-vo="itemList" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
                     <div data-vo-item="notFound" class="col">데이터가 존재 하지 않습니다.</div>
                     <div data-vo-item="item" class="col">
@@ -75,10 +75,18 @@
             </div>
             <!-- /최근 구매 상품 -->
 
-            <!-- 카테고리 상품 --><div id="category-items" class="container-lg py-4"></div>
+            <!-- 카테고리 상품 --><div id="category-items" class="container-lg py-4">
+                <h2 data-vo="title" class="pb-2 border-bottom">전체 상품</h2>
+            </div>
         <!-- /컨테이너 바디 --></main>
         <!-- 푸터 --> <div id="footer" class="container-lg"></div>
     </div>
+
+    <style>
+    *:focus {
+        background-color: red !important;
+    }
+    </style>
 </body>
 
 </html>
