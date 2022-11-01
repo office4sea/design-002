@@ -8,9 +8,8 @@ hbF({
         '/design-002/libs/webapp/hbF.popup.js'
     ],
     scripts: [
+        '/design-002/hpg/gnb/gnb.js',
         'list/topBanner.js',
         'list/lastItems.js',
     ]
 });
-
-hbF();

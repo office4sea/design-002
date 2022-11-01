@@ -14,10 +14,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body flex-row-reverse">
-            <form class="d-flex" role="search" action="/design-002/hpg/store/list.html">
+            <form class="d-flex" role="search">
                 <div class="input-group">
-                    <input name="word" class="form-control border-secondary" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">
+                    <input data-vo="word" class="form-control border-secondary" type="search" placeholder="상품명 검색" aria-label="Search">
+                    <button data-vo="search" class="btn btn-outline-secondary" type="button">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>
@@ -26,7 +26,7 @@
             <ul class="navbar-nav pe-3">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-shop"></i> 상점
+                        <i class="bi bi-shop"></i> 전체 상품
                     </a>
                     <ul class="dropdown-menu dropdown-menu">
                         <li><a class="dropdown-item active" href="#" role="button">전체 상품</a></li>

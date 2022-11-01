@@ -1,0 +1,23 @@
+[
+    {
+        "title": "전체 메뉴",
+        "items": [{
+            "title": "전체 메뉴",
+            "url": "/design-002/hpg/store/list.html"
+        }, {
+            "title": "음료",
+            "url": "/design-002/hpg/store/list.html?category=1"
+        }, {
+            "title": "스넥/라면",
+            "url": "/design-002/hpg/store/list.html?category=2"
+        }]
+    },
+    {
+        "title": "구매 정보",
+        "url": "/design-002/hpg/payment/main.html"
+    },
+    {
+        "title": "마이 정보",
+        "url": "/design-002/hpg/myinf/main.html"
+    }
+]

@@ -73,26 +73,43 @@ hbF.bindProperty('popup', hbF.invoke(_=> {
             focusTarget: undefined,
             get() {return returnFocus._getter},
             _getter(focusTarget) {
-                returnFocus.focusTarget = focusTarget;
+                returnFocus.focusTarget = returnFocus._getTarget(focusTarget);
                 return vo;
+            },
+            _getTarget(focusTarget) {
+                if(!focusTarget) return;
+
+                if(focusTarget instanceof Event) {
+                    const {target, currentTarget} = focusTarget;
+                    return currentTarget || target;
+                } else if(typeof focusTarget == 'string') {
+                    return document.querySelector(focusTarget);
+                }
+
+                return focusTarget;
             },
             focus() {
                 const {focusTarget} = returnFocus;
                 if(!focusTarget) return;
 
-                if(focusTarget instanceof Event) {
-                    const {target, currentTarget} = focusTarget;
-                    (currentTarget || target)?.focus();
-                    return Object.assign(returnFocus, {focusTarget:undefined});
-                }
-                if(typeof focusTarget == 'string') {
-                    const target = document.querySelector(focusTarget);
-                    target?.focus();
-                    return Object.assign(returnFocus, {focusTarget:undefined});
-                }
-
                 focusTarget.focus();
                 return Object.assign(returnFocus, {focusTarget:undefined});
+                // const {focusTarget} = returnFocus;
+                // if(!focusTarget) return;
+
+                // if(focusTarget instanceof Event) {
+                //     const {target, currentTarget} = focusTarget;
+                //     (currentTarget || target)?.focus();
+                //     return Object.assign(returnFocus, {focusTarget:undefined});
+                // }
+                // if(typeof focusTarget == 'string') {
+                //     const target = document.querySelector(focusTarget);
+                //     target?.focus();
+                //     return Object.assign(returnFocus, {focusTarget:undefined});
+                // }
+
+                // focusTarget.focus();
+                // return Object.assign(returnFocus, {focusTarget:undefined});
             }
         };
 
@@ -173,7 +190,9 @@ hbF.addEventListener('ready', _=> {
             // 이벤트 바인딩
             bindEvent();
             // 팝업오픈 이벤트 처리
-            vo.addEvent('open', param=> vo.setHtml(param));
+            vo.addEvent('open', param=> {
+                vo.setHtml((typeof param == 'string') ? {message: param} : param);
+            });
         });
     }
     const appendConfirmHtml = _=> {
@@ -211,7 +230,9 @@ hbF.addEventListener('ready', _=> {
             // 이벤트 바인딩
             bindEvent();
             // 팝업오픈 이벤트
-            vo.addEvent('open', param=> vo.setHtml(param));
+            vo.addEvent('open', param=> {
+                vo.setHtml((typeof param == 'string') ? {message: param} : param);
+            });
         });
     };
 
