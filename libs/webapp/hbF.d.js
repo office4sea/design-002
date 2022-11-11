@@ -217,7 +217,40 @@ const voHaldle = Object.assign(new HTMLElement, {
      * @param {*} className
      * @returns {voHaldle}
      */
-    hasClass(className) {}
+    hasClass(className) {},
+    /**
+     * vo-item 디렉티브에 해당 하는 바인딩 객체를 추가 합니다.
+     * @param {string} name 추가할 item 명칭
+     * @param {(vo:ValueObject)=> void} onBindItem 
+     * @returns {ValueObject}
+     * @example
+     * // html
+     * <ul data-vo="list">
+     *   <li data-vo-item="notFound">데이터 없음</li>
+     *   <li data-vo-item="tuple">
+     *       <strong data-vo="title">제목</strong>
+     *       <span data-vo="info">내용</span>
+     *   </li>
+     * </ul>
+     * 
+     * // javascript
+     * var table = [
+     *   {title: 'a1', info: 'b1'},
+     *   {title: 'a2', info: 'b2'},
+     * ];
+     * 
+     * // list 엘리먼트 비우기
+     * vo.list.empty();
+     * // 데이터 없음 처리
+     * if(table.length == 0) vo.list.appendItem('notFound');
+     * else {
+     *   // 데이터를 순회 하면 텍스트 출력
+     *   table.forEach(each=> {
+     *      vo.list.appendItem('tuple', voItem=> voItem.setText(each));
+     *   });
+     * }
+     */
+    appendItem(name, onBindItem) {},
 });
 const ValueObject = {
     /**
